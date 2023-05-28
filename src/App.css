@@ -1,0 +1,41 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+body {
+  background: #191919;
+  color: #f2f2f2;
+  min-height: 100vh;
+}
+
+button {
+  cursor: pointer;
+}
+
+.dropdown-toggle::after {
+  content: none;
+}
+
+.due {
+  background-color: #bbffa5;
+  padding: 5px;
+  border-radius: 12px;
+  color: #000000;
+  width: 100px;
+  text-align: center;
+}
+
+.Tomarrow {
+  background-color: #fffd96;
+}
+
+.Today {
+  background-color: #ffa850;
+}
+
+.Passed {
+  background-color: #f55353;
+}
