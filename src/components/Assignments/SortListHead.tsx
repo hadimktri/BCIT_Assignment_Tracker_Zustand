@@ -1,6 +1,7 @@
 import styles from "./assignments.module.css";
 import { useStore } from "../../store";
-import { TbCircleFilled } from "react-icons/tb";
+import { RiArrowDropDownLine } from "react-icons/ri";
+import { IoIosArrowDropdownCircle } from "react-icons/io";
 
 const SortListHead = () => {
   const sortByDone = useStore((state) => state.sortByDone);
@@ -12,25 +13,34 @@ const SortListHead = () => {
   const sortOnGoing = useStore((state) => state.sortOnGoing);
 
   return (
-    <div className={styles.sort}>
+    <div className={styles.sortContainer}>
       <div className={styles.left}>
         <div className={styles.leftSort}>
-          <span onClick={sortByDone}>Done</span>
-          <span onClick={sortByDueDate}>Due</span>
-          <span onClick={sortByTitle}>Title</span>
+          <span onClick={sortByDone}>
+            <span>Done</span>
+            <RiArrowDropDownLine size={25} />
+          </span>
+          <span onClick={sortByDueDate}>
+            <span>Due</span>
+            <RiArrowDropDownLine size={25} />
+          </span>
+          <span onClick={sortByTitle}>
+            <span>Title</span>
+            <RiArrowDropDownLine size={25} />
+          </span>
         </div>
         <div className={styles.colordSort}>
           <span onClick={sortPassed}>
-            <TbCircleFilled size={20} />
+            <IoIosArrowDropdownCircle size={25} />
           </span>
           <span onClick={sortToday}>
-            <TbCircleFilled size={20} />
+            <IoIosArrowDropdownCircle size={25} />
           </span>
           <span onClick={sortTomarrow}>
-            <TbCircleFilled size={20} />
+            <IoIosArrowDropdownCircle size={25} />
           </span>
           <span onClick={sortOnGoing}>
-            <TbCircleFilled size={20} />
+            <IoIosArrowDropdownCircle size={25} />
           </span>
         </div>
       </div>

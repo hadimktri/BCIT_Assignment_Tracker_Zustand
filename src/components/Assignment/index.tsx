@@ -26,7 +26,7 @@ export function Assignment({ id, task, done, dueDate }: Ilist) {
         ? "Tomarrow"
         : diff < 0
         ? "Passed"
-        : `${diff} days`;
+        : `${diff + 1} days`;
     return (
       <div className={`due ${diff}`}>
         <span>{diff}</span>
@@ -46,7 +46,9 @@ export function Assignment({ id, task, done, dueDate }: Ilist) {
       </div>
 
       <div className={styles.right}>
-        <DatePicker handleDaySelect={handleDaySelect} />
+        <div>
+          <DatePicker handleDaySelect={handleDaySelect} />
+        </div>
         <button
           className={styles.deleteButton}
           onClick={() => deleteAssignment(id)}
