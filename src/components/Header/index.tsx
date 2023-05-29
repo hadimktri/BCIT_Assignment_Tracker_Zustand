@@ -1,5 +1,4 @@
 import { useState, useRef, useEffect } from "react";
-import { AiOutlinePlusCircle } from "react-icons/ai";
 import { uppercase } from "../../helpers/stringHelpers";
 import { useStore } from "../../store";
 import styles from "./header.module.css";
@@ -13,8 +12,9 @@ function Header() {
   }, []);
 
   const addAssignment = useStore((state) => state.addAssignment);
+  const setListItem = useStore((state) => state.setListItem);
 
-  const handleAssignment = (e: React.ChangeEvent<HTMLInputElement>, input: string) => {
+  const handleCreate = (e: any, input: string) => {
     e.preventDefault();
     input.length &&
       addAssignment({
@@ -26,13 +26,17 @@ function Header() {
     setInput("");
   };
 
+  useEffect(() => {
+    setListItem(input);
+  }, [input]);
+
   return (
     <header className={styles.header}>
       <h1>{uppercase("bcit")} Assignment Tracker</h1>
       <form className={styles.newAssignmentForm}>
         <input
           ref={ref}
-          placeholder="Add a new assignment"
+          placeholder="Search / Add "
           type="text"
           onChange={(e) => {
             setInput(e.target.value);
@@ -42,11 +46,10 @@ function Header() {
         <button
           disabled={!input.length}
           onClick={(e: any) => {
-            handleAssignment(e, input);
+            handleCreate(e, input);
           }}
         >
-          Create
-          <AiOutlinePlusCircle size={20} />
+          Add
         </button>
       </form>
     </header>

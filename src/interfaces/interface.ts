@@ -6,11 +6,13 @@ export interface Ilist {
 }
 
 export interface IdatePicker {
-  handleDaySelect: (value: Date) => void;
+  handleDaySelect: (value: any) => void;
 }
 
 export type State = {
   assignmentList: Ilist[];
+  showList: Ilist[];
+  searchItem: string;
 };
 
 export type Actions = {
@@ -20,5 +22,12 @@ export type Actions = {
   deleteAssignment: (id: number) => void;
   completedCount: () => number;
   fetchAssignments: () => void;
-  
+  sortByDone: () => void;
+  sortByDueDate: () => void;
+  sortByTitle: () => void;
+  setListItem: (item: string) => void;
+  sortPassed: () => void;
+  sortToday: () => void;
+  sortTomarrow: () => void;
+  sortOnGoing: () => void;
 };

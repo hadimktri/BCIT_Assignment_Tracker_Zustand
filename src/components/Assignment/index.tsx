@@ -27,18 +27,22 @@ export function Assignment({ id, task, done, dueDate }: Ilist) {
         : diff < 0
         ? "Passed"
         : `${diff} days`;
-    return <p className={`due ${diff}`}>{diff}</p>;
+    return (
+      <div className={`due ${diff}`}>
+        <span>{diff}</span>
+        <span>{dueDate}</span>
+      </div>
+    );
   };
 
   return (
-    <div className={styles.assignment}>
+    <>
       <div className={styles.left}>
         <button className={styles.checkContainer} onClick={() => setDone(id)}>
           {done ? <TbCircleCheckFilled size={20} /> : <TbCircle size={20} />}
         </button>
-        <p className={done ? styles.textCompleted : ""}>{task}</p>
-        <div>{dueDate && handleDueDisplay(dueDate)}</div>
-        <p>{dueDate}</p>
+        {dueDate && handleDueDisplay(dueDate)}
+        <span className={done ? styles.textCompleted : ""}>{task}</span>
       </div>
 
       <div className={styles.right}>
@@ -50,6 +54,6 @@ export function Assignment({ id, task, done, dueDate }: Ilist) {
           <TbTrash size={20} />
         </button>
       </div>
-    </div>
+    </>
   );
 }

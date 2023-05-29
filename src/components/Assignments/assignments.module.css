@@ -1,29 +1,22 @@
-.assignments {
-  width: 100%;
-  max-width: 1000px;
-  margin: 0 auto;
-  margin-top: 60px;
-  padding: 0 1rem;
-}
-
 .header {
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: space-between;
-  margin-bottom: 24px;
+  margin-left: 20px;
 }
 
-.header > div {
+.header>div {
   display: flex;
   align-items: center;
   gap: 8px;
+  margin: 5px;
 }
 
 .header p {
   color: #4ea8de;
   font-size: 14px;
-  font-weight: 700;
-  margin-top: 15px;
+  font-weight: 600;
+  margin-bottom: 0;
 }
 
 .textPurple {
@@ -33,15 +26,137 @@
 .header span {
   background: #333333;
   color: #d9d9d9;
-  padding: 6px 12px;
+  padding: 4px 10px;
   border-radius: 999px;
-  font-size: 14px;
-  font-weight: 700;
-  align-items: center;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.sort {
+
+  background: #181818;
+  border: 1px solid #636363;
+  border-radius: 5px;
+  padding: 8px 0;
+  margin: 8px 0;
+}
+
+.left {
+  display: flex;
+  justify-content: space-between;
+}
+
+.left>div:first-child {
+  display: flex;
+  width: 60%;
+  justify-content: flex-start;
+}
+
+.left span {
+  margin-left: 5px;
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+.left span:hover {
+  color: indianred;
+}
+
+.colordSort {
+  display: flex;
+  width: 400%;
+  justify-content: flex-end;
+
+}
+
+.colordSort span:first-child {
+  color: #ff6868;
+}
+
+.colordSort span:nth-child(2) {
+  color: #ffb66d;
+}
+
+.colordSort span:nth-child(3) {
+  color: #f8f7a6;
+}
+
+.colordSort span:nth-child(4) {
+  color: #92ff6e;
+}
+
+.right {
+  display: none;
+}
+
+.assignments {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  margin-top: 30px;
 }
 
 .list {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 5px;
+}
+
+.assignment {
+  width: 100%;
+  background: #262626;
+  border: 1px solid #0d0d0d;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  line-height: 20px;
+}
+
+
+@media screen and (min-width:600px) {
+  .header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  .assignments {
+    margin-top: 50px;
+  }
+
+  .list {
+    padding: 0 20px;
+  }
+
+  .sort {
+    margin: 8px 20px;
+  }
+
+  .leftSort>span {
+    margin-right: 90px;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .left {
+    width: 73%;
+  }
+
+  .sort {
+    display: flex;
+    justify-content: space-between;
+    margin: 8px 20px;
+  }
+
+  .right {
+    display: flex;
+    justify-content: space-around;
+    width: 17%;
+  }
+
+  .assignments {
+    margin-top: 80px;
+  }
+
+
 }

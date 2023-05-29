@@ -1,27 +1,8 @@
-.assignment {
-  width: 100%;
-  background: #262626;
-  border: 1px solid #333333;
-  padding: 5px 15px;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-}
-
-.assignment p {
-  font-size: 16px;
-  line-height: 19px;
-  margin: 0 15px;
-  min-width: 100px;
-  text-transform: capitalize;
-}
-
-p.textCompleted {
+span.textCompleted {
   color: #84b982;
   text-decoration: line-through;
   text-transform: capitalize;
+  margin-left: 30px;
 }
 
 .checkContainer {
@@ -31,32 +12,53 @@ p.textCompleted {
   border: none;
 }
 
-
 .checkContainer svg {
-  margin-bottom: 8px;
   color: #84b982;
+  margin: 0 10px;
+  margin-bottom: 10px;
 }
 
 .deleteButton {
   background: none;
   border: none;
   color: #ee9f9f;
-  margin-left: 20px;
+  margin: 0 10px;
 }
 
 .left {
   display: flex;
   align-items: center;
-  width: 90%;
   justify-content: flex-start;
+  min-width: 50%;
+}
+
+
+.left>span {
+  margin-left: 20px;
+  overflow: hidden;
+  text-transform: capitalize;
 }
 
 .right {
   display: flex;
-  align-items: center;
+  justify-content: space-around;
 }
 
 .calendar svg {
-  margin-top: 0px;
   background: none;
+}
+
+@media screen and (min-width: 800px) {
+
+  .deleteButton {
+    background: none;
+    border: none;
+    color: #ee9f9f;
+    margin: 0 20px;
+  }
+
+  .right svg {
+    margin-right: 10px;
+  }
+  
 }

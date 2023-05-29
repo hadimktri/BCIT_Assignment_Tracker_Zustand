@@ -7,9 +7,11 @@ import { useEffect } from "react";
 
 const App = () => {
   const fetchAssignments = useStore((state) => state.fetchAssignments);
+  const setListItem = useStore((state) => state.setListItem);
 
   useEffect(() => {
     fetchAssignments();
+    setListItem("");
   }, []);
 
   return (
