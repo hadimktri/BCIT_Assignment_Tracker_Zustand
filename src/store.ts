@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import { immer } from "zustand/middleware/immer";
-import { Actions, State } from "./interfaces/interface";
+import { Actions, State, Ilist } from "./interfaces/interface";
 import { devtools, persist } from "zustand/middleware";
 import { differenceInDays, format } from "date-fns";
 
@@ -68,41 +68,34 @@ export const useStore = create(
           set({ assignmentList: result.state.assignmentList });
         },
 
-        sortByDone: () =>
+        sortBy: (filterType: string | void) => {
           set((state) => {
             state.showList = state.assignmentList;
-            state.showList.sort((a, b) => {
+            state.showList.sort((a: Ilist, b: Ilist) => {
+              if (a.done !== b.done) {
+                return a.done ? 1 : -1;
+              } else {
+                // eslint-disable-next-line no-debugger
+                // debugger;
+                return a[<"task" | "dueDate">filterType].localeCompare(
+                  b[<"task" | "dueDate">filterType]
+                );
+              }
+            });
+          });
+        },
+        sortByDone: () => {
+          set((state) => {
+            state.showList = state.assignmentList;
+            state.showList.sort((a: Ilist, b: Ilist) => {
               if (a.done !== b.done) {
                 return a.done ? -1 : 1;
               } else {
                 return a.dueDate.localeCompare(b.dueDate);
               }
             });
-          }),
-
-        sortByDueDate: () =>
-          set((state) => {
-            state.showList = state.assignmentList;
-            state.showList.sort((a, b) => {
-              if (a.done !== b.done) {
-                return a.done ? 1 : -1;
-              } else {
-                return a.dueDate.localeCompare(b.dueDate);
-              }
-            });
-          }),
-
-        sortByTitle: () =>
-          set((state) => {
-            state.showList = state.assignmentList;
-            state.showList.sort((a, b) => {
-              if (a.done !== b.done) {
-                return a.done ? 1 : -1;
-              } else {
-                return a.task.localeCompare(b.task);
-              }
-            });
-          }),
+          });
+        },
 
         sortPassed: () =>
           set((state) => {

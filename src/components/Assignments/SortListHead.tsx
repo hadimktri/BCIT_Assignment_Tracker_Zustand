@@ -4,9 +4,8 @@ import { RiArrowDropDownLine } from "react-icons/ri";
 import { IoIosArrowDropdownCircle } from "react-icons/io";
 
 const SortListHead = () => {
+  const sortBy = useStore((state) => state.sortBy);
   const sortByDone = useStore((state) => state.sortByDone);
-  const sortByDueDate = useStore((state) => state.sortByDueDate);
-  const sortByTitle = useStore((state) => state.sortByTitle);
   const sortPassed = useStore((state) => state.sortPassed);
   const sortToday = useStore((state) => state.sortToday);
   const sortTomarrow = useStore((state) => state.sortTomarrow);
@@ -20,11 +19,11 @@ const SortListHead = () => {
             <span>Done</span>
             <RiArrowDropDownLine size={25} />
           </span>
-          <span onClick={sortByDueDate}>
+          <span onClick={() => sortBy("dueDate")}>
             <span>Due</span>
             <RiArrowDropDownLine size={25} />
           </span>
-          <span onClick={sortByTitle}>
+          <span onClick={() => sortBy("task")}>
             <span>Title</span>
             <RiArrowDropDownLine size={25} />
           </span>
