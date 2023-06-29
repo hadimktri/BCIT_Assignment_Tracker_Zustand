@@ -5,30 +5,25 @@ import styles from "./header.module.css";
 
 function Header() {
   const [input, setInput] = useState<string>("");
-  const ref = useRef<any>();
+  const ref = useRef<any>(null);
 
   useEffect(() => {
     ref.current.focus();
   }, []);
 
   const addAssignment = useStore((state) => state.addAssignment);
-  const setListItem = useStore((state) => state.setListItem);
 
-  const handleCreate = (e: any, input: string) => {
+  const handleCreate = (e: any) => {
     e.preventDefault();
-    input.length &&
+    e.target.value.length &&
       addAssignment({
         id: new Date().getTime(),
-        task: input,
+        task: e.target.value,
         done: false,
         dueDate: "",
       });
     setInput("");
   };
-
-  useEffect(() => {
-    setListItem(input);
-  }, [input]);
 
   return (
     <header className={styles.header}>
@@ -45,8 +40,9 @@ function Header() {
         />
         <button
           disabled={!input.length}
-          onClick={(e: any) => {
-            handleCreate(e, input);
+          value={input}
+          onClick={(e) => {
+            handleCreate(e);
           }}
         >
           Add

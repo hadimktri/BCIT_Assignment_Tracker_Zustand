@@ -63,7 +63,7 @@ export const useStore = create(
         //no need to be an async function, just a sample for api data fetching
         fetchAssignments: async () => {
           const result = await JSON.parse(
-            localStorage.getItem("Assignment-Storage")!
+            localStorage.getItem("Assignment-Storage") as string
           );
           set({ assignmentList: result.state.assignmentList });
         },
@@ -75,8 +75,6 @@ export const useStore = create(
               if (a.done !== b.done) {
                 return a.done ? 1 : -1;
               } else {
-                // eslint-disable-next-line no-debugger
-                // debugger;
                 return a[<"task" | "dueDate">filterType].localeCompare(
                   b[<"task" | "dueDate">filterType]
                 );
